@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 
 const Main = () => (
   <>
-    <main className="flex-grow overflow-y-auto">
+    <main className="flex-1 wrapper">
       <Outlet />
     </main>
   </>

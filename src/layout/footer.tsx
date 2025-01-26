@@ -1,11 +1,11 @@
-import { FC } from "react";
-
-const Footer: FC = () => {
+const Footer = () => {
   const appName = import.meta.env.VITE_APP_NAME;
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer className="bg-gray-800 text-white p-4">
-      <div className="container mx-auto text-center">
-        &copy; {new Date().getFullYear()} `${appName} All rights reserved.`
+    <footer className="border-t">
+      <div className="p-5 flex-center">
+        {currentYear} {appName}. All Rights Reserved
       </div>
     </footer>
   );

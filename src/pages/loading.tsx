@@ -8,6 +8,7 @@ const LoadingPage = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
+        marginTop: "25%",
       }}
     >
       <img src={loader} height={100} width={100} alt="Loading..." />

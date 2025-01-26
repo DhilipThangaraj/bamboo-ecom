@@ -1,7 +1,8 @@
 import { Button } from "./components/ui/button";
+import LoadingPage from "./pages/loading";
 
 function App() {
-  return <Button>Click me</Button>;
+  return <LoadingPage />;
 }
 
 export default App;

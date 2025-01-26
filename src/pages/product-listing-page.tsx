@@ -1,7 +1,10 @@
+import { useEffect, useState } from "react";
 import { apiRequest } from "@/lib/apiService";
-import { useEffect } from "react";
+import ProductList from "@/components/product/product-list";
+//import InfiniteScroll from "react-infinite-scroll-component";
 
 const ProductListingPage = () => {
+  const [data, setData] = useState([]);
   useEffect(() => {
     fetchReq();
   }, []);
@@ -9,8 +12,13 @@ const ProductListingPage = () => {
   const fetchReq = async () => {
     const res = await apiRequest("GET", "/products");
     console.log("?????????????res", res);
+    setData(res);
   };
-  return <>Product Listing Page</>;
+  return (
+    <div className="container mx-auto p-4">
+      <ProductList data={data} title="Discover the Latest Arrivals" />
+    </div>
+  );
 };
 
 export default ProductListingPage;

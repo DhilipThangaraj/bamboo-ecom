@@ -1,4 +1,4 @@
-import React, { useState, useEffect, createContext, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -8,39 +8,16 @@ import {
   DropdownMenuContent,
   DropdownMenuCheckboxItem,
 } from "@/components/ui/dropdown-menu";
-import { SunIcon, MoonIcon, SunMoon } from "lucide-react";
-
-// Theme context for React
-const ThemeContext = createContext();
-
-export const ThemeProvider = ({ children }) => {
-  const [theme, setTheme] = useState(localStorage.getItem("theme") || "system");
-
-  useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme);
-    localStorage.setItem("theme", theme);
-  }, [theme]);
-
-  return (
-    <ThemeContext.Provider value={{ theme, setTheme }}>
-      {children}
-    </ThemeContext.Provider>
-  );
-};
-
-export const useTheme = () => useContext(ThemeContext);
+import { SunIcon, MoonIcon } from "lucide-react";
+import { useThemeStore } from "@/store/use-theme-store";
 
 const ModeToggle = () => {
-  const [mounted, setMounted] = useState(false);
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme } = useThemeStore();
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return null;
-  }
+  const toggleTheme = () => {
+    const newTheme: string = theme === "light" ? "dark" : "light";
+    setTheme(newTheme);
+  };
 
   return (
     <DropdownMenu>
@@ -49,33 +26,21 @@ const ModeToggle = () => {
           variant="ghost"
           className="focus-visible:ring-0 focus-visible:ring-offset-0"
         >
-          {theme === "system" ? (
-            <SunMoon />
-          ) : theme === "dark" ? (
-            <MoonIcon />
-          ) : (
-            <SunIcon />
-          )}
+          {theme === "dark" ? <MoonIcon /> : <SunIcon />}
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         <DropdownMenuLabel>Appearance</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuCheckboxItem
-          checked={theme === "system"}
-          onClick={() => setTheme("system")}
-        >
-          System
-        </DropdownMenuCheckboxItem>
-        <DropdownMenuCheckboxItem
           checked={theme === "dark"}
-          onClick={() => setTheme("dark")}
+          onClick={toggleTheme}
         >
           Dark
         </DropdownMenuCheckboxItem>
         <DropdownMenuCheckboxItem
           checked={theme === "light"}
-          onClick={() => setTheme("light")}
+          onClick={toggleTheme}
         >
           Light
         </DropdownMenuCheckboxItem>

@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import NotFoundPage from "./pages/not-found-page";
 import Layout from "./layout";
+import ThemeContext from "./components/theme/theme-provider";
 
 const router = createBrowserRouter([
   {
@@ -29,7 +30,11 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <ThemeContext>
+      <RouterProvider router={router} />
+    </ThemeContext>
+  );
 }
 
 export default App;

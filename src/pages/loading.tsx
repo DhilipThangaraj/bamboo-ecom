@@ -1,4 +1,3 @@
-import React from "react";
 import loader from "@/styles/assets/loader.gif";
 
 const LoadingPage = () => {

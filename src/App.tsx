@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import NotFoundPage from "./pages/not-found-page";
 import Layout from "./layout";
 import ThemeContext from "./components/theme/theme-provider";
+import ProductListingPage from "./pages/product-listing-page";
 
 const router = createBrowserRouter([
   {
@@ -11,7 +12,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <div>product listing</div>,
+        element: <ProductListingPage />,
       },
       {
         path: "product-details/:id",

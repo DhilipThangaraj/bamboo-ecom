@@ -1,8 +1,9 @@
 {
-  "name": "bamboo-ecom",
+  "name": "bamboo-ecommerce-app",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
+  "author": "dhilipkumar thangaraj",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",

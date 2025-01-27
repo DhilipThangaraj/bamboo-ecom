@@ -3,6 +3,9 @@ import NotFoundPage from "./pages/not-found-page";
 import Layout from "./layout";
 import ThemeContext from "./components/theme/theme-provider";
 import ProductListingPage from "./pages/product-listing-page";
+import ProductDetailsPage from "./pages/product-details-page";
+import { Toaster } from "@/components/ui/toaster";
+import ReactQueryProvider from "@/react-query/query-client-provider";
 
 const router = createBrowserRouter([
   {
@@ -15,16 +18,8 @@ const router = createBrowserRouter([
         element: <ProductListingPage />,
       },
       {
-        path: "product-details/:id",
-        element: <div className="mt-32">{"Product Details Page"}</div>,
-      },
-      {
-        path: "/cart",
-        element: (
-          <div className="mt-32">
-            <div>{"Add to cart page"}</div>
-          </div>
-        ),
+        path: "products/:id",
+        element: <ProductDetailsPage />,
       },
     ],
   },
@@ -33,7 +28,10 @@ const router = createBrowserRouter([
 function App() {
   return (
     <ThemeContext>
-      <RouterProvider router={router} />
+      <ReactQueryProvider>
+        <RouterProvider router={router} />
+        <Toaster />
+      </ReactQueryProvider>
     </ThemeContext>
   );
 }

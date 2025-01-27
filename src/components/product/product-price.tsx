@@ -20,7 +20,7 @@ const ProductPrice = ({
   // const [intValue, floatValue] = stringValue.split(".");
 
   return (
-    <p className={cn("text-2xl mt-2", className)}>
+    <p className={cn("text-2xl", className)}>
       <span className="text-xs align-super line-through">
         {currency} {regularPrice.toFixed(2)}
       </span>{" "}

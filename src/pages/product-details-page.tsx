@@ -81,7 +81,7 @@ const ProductDetailsPage = () => {
   }
 
   // Destructure product data from the API response
-  const { id, title, price, description, category, image, rating } =
+  const { title, price, description, category, image, rating } =
     productDetailData;
 
   return (
@@ -90,7 +90,7 @@ const ProductDetailsPage = () => {
         <div className="grid grid-cols-1 md:grid-cols-5">
           {/* Images Column */}
           <div className="col-span-2">
-            <ProductImages images={image || []} />
+            <ProductImages imageUrl={image || ""} />
           </div>
 
           {/* Details Column */}
@@ -135,7 +135,7 @@ const ProductDetailsPage = () => {
                 <div className="mb-2 flex justify-between">
                   <div>Status</div>
                   {rating?.count > 0 ? (
-                    <Badge variant="outline">`${rating?.count} In Stock`</Badge>
+                    <Badge variant="outline">{rating?.count} In Stock</Badge>
                   ) : (
                     <Badge variant="destructive">Out Of Stock</Badge>
                   )}

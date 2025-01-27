@@ -36,7 +36,7 @@ const Search = () => {
         <Input
           name="q"
           type="text"
-          placeholder="functionality not done.."
+          placeholder="UI only"
           className="md:w-[100px] lg:w-[300px]"
         />
         <Button>
